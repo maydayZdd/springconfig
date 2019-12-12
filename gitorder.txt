@@ -1,0 +1,61 @@
+Git 命令大全
+
+<file> // 文件名
+
+mkdir <file>  创建文件夹
+cd <file> 进入目标文件
+pwd 显示当前目录
+cat 查看文件内容
+git init 把当前目录变成Git仓库
+ll 显示当前所有目录文件详情
+ls 显示当前目录文件
+
+git add <file> 添加文件到暂存区  //可以提交多个 
+git commit 把暂存区的所有内容提交到当前分支 //-m <message> 提交说明 ''字符串形式
+git status 查看仓库当前状态
+
+git diff <file> 查看具体修改内容 (比较工作区和暂存区)
+git diff HEAD --[file] 比较工作区和版本库最新版本
+
+git log 查看提交历史
+git reflog 查看命令历史
+
+git reset --hrad HEAD^ 回退上个版本
+git reset --hrad <id> 回退指定版本
+
+//
+	HEAD 指向的是当前版本
+	上一个版本就是HEAD^，上上一个版本就是HEAD^^，
+	当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100
+//
+
+git restore <file> || git checkout -- <file> 丢弃工作区修改
+git restore --staged <file> || git reset HEAD <file> 可以把暂存区的修改撤销放回工作区
+//
+	git reset或 git restore命令既可以回退版本，也可以把暂存区的修改回退到工作区。
+	当我们用HEAD时，表示最新的版本。
+	
+	场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，
+			用命令git restore <file> || git checkout -- <file>
+			
+	场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，
+			第一步用命令git restore --staged <file> || git reset HEAD <file>，就回到了场景1，第二步按场景1操作。
+	
+	场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，
+			参考版本回退一节，不过前提是没有推送到远程库。
+	
+//
+rm <file> 删除工作区文件
+git rm <file> 删除版本库文件
+
+git checkout -- <file>  //恢复删除文件，注：版本库还有的话可以用该命令恢复
+
+
+
+
+
+
+
+
+
+
